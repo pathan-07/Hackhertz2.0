@@ -218,15 +218,15 @@ export function RegisterForm() {
                   </FormItem>
                 )}
               />
-              <Button type="button" variant="outline" onClick={handleGetSuggestions} disabled={isPending}>
-                {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+              <Button type="button" variant="techOutline" onClick={handleGetSuggestions} disabled={isPending} className="group">
+                {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4 group-hover:text-orange-500 transition-colors" />}
                 Get Track Suggestions
               </Button>
 
               {suggestions.length > 0 && (
-                 <Alert>
-                    <Sparkles className="h-4 w-4" />
-                    <AlertTitle className="font-headline">AI Suggested Tracks</AlertTitle>
+                 <Alert className="tech-card border-orange-500/30">
+                    <Sparkles className="h-4 w-4 text-gradient" />
+                    <AlertTitle className="font-headline text-gradient">AI Suggested Tracks</AlertTitle>
                     <AlertDescription>
                         <ul className="list-disc pl-5 mt-2">
                         {suggestions.map((s, i) => <li key={i}>{s}</li>)}
@@ -258,8 +258,8 @@ export function RegisterForm() {
 
 
               <div className="flex justify-between">
-                <Button variant="outline" onClick={prevStep}>Previous</Button>
-                <Button type="submit" disabled={form.formState.isSubmitting}>
+                <Button variant="techOutline" onClick={prevStep}>Previous</Button>
+                <Button type="submit" variant="glow" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Submit Registration
                 </Button>

@@ -1,0 +1,16 @@
+/* Anti Dark Reader CSS to prevent hydration mismatches */
+svg {
+  /* !important is used to override Dark Reader */
+  --darkreader-inline-stroke: none !important;
+  --darkreader-inline-fill: none !important;
+  --darkreader-inline-color: currentColor !important;
+}
+
+/* Prevent Dark Reader from adding inline styles that would cause hydration mismatches */
+[data-darkreader-inline-stroke],
+[data-darkreader-inline-fill],
+[data-darkreader-inline-color] {
+  --darkreader-inline-stroke: none !important;
+  --darkreader-inline-fill: none !important;
+  --darkreader-inline-color: currentColor !important;
+}

@@ -40,7 +40,7 @@ export function DomainsSection() {
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.03, y: -8 }}
           >
-            <Card className="bg-card border-border/20 h-full">
+            <Card variant="tech" className="h-full">
                <CardHeader className="flex flex-row items-center gap-4">
                   {domain.icon}
                   <CardTitle className="text-2xl">{domain.title}</CardTitle>

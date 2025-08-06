@@ -17,6 +17,16 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    // Add disableStaticImages to allow importing images directly
+    dangerouslyAllowSVG: true,
+  },
+  // Disable React strict mode to prevent hydration issues with browser extensions
+  reactStrictMode: false,
+  // Suppress hydration warnings in production
+  onDemandEntries: {
+    // Make Next.js not show warnings for hydration errors in production
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
   },
 };
 

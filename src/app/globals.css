@@ -1,29 +1,42 @@
+/* Font imports for cyberpunk/hackathon theme */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Dark Reader fix CSS import commented out - not needed if extension is removed */
+/* @import './dark-reader-fix.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 224 71% 4%; /* #020817 */
-    --foreground: 210 40% 98%; /* #f8fafc */
+    /* Darker color scheme based on the HackHertz theme */
+    --background: 260 60% 5%; /* Even darker purple background */
+    --foreground: 210 40% 98%; /* Light text */
 
-    --card: 222 84% 5%; /* #020817 */
+    --card: 260 70% 8%; 
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
+    --popover: 260 60% 5%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
+    /* HackHertz cyberpunk colors - replaced orange with electric cyan */
+    --primary: 185 100% 50%; /* Electric Cyan */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 33% 17%;
+    --secondary: 280 70% 50%; /* Purple */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 280 30% 15%;
+    --muted-foreground: 215 20% 80%;
 
-    --accent: 217 33% 17%;
+    --accent: 340 80% 55%; /* Pink */
     --accent-foreground: 210 40% 98%;
+
+    /* Alternative accent - Electric Lime */
+    --accent-alt: 110 100% 55%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -38,35 +51,851 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
     background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Source Code Pro', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    font-family: 'Orbitron', 'Rajdhani', sans-serif;
+    position: relative;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Cyberpunk heading effect */
+  h1 {
+    position: relative;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 800;
+    /* Added clip path to cut corners for tech look */
+    clip-path: polygon(
+      0% 15%,
+      15% 0%,
+      85% 0%,
+      100% 15%,
+      100% 85%,
+      85% 100%,
+      15% 100%,
+      0% 85%
+    );
+  }
+  
+  h1.hero-title {
+    color: #fff;
+    text-shadow: 
+      0 0 5px #fff, 
+      0 0 10px #fff, 
+      0 0 20px #00aaff, 
+      0 0 30px #00aaff;
+    animation: text-flicker 5s infinite alternate;
+  }
+  
+  h1::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    top: 0;
+    color: rgba(255, 126, 0, 0.7);
+    overflow: hidden;
+    width: 100%;
+    opacity: 0.5;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #00aaff, #f012fe, #0070f3);
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+    position: relative;
+  }
+  
+  .text-gradient::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(0, 170, 255, 0.6) 10%,
+      transparent 20%,
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    mix-blend-mode: overlay;
+    animation: gradient-shine 4s linear infinite;
+  }
+  
+  @keyframes gradient-shine {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Cyberpunk hacker decorative elements */
+  .cyber-dots {
+    background-image: radial-gradient(rgba(0, 170, 255, 0.3) 1px, transparent 1px);
+    background-size: 12px 12px;
+    background-position: 0 0;
+  }
+  
+  .code-lines {
+    background-image: linear-gradient(to bottom, rgba(0, 170, 255, 0.1) 1px, transparent 1px);
+    background-size: 100% 8px;
+  }
+  
+  .matrix-bg {
+    position: relative;
+  }
+  
+  .matrix-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300aaff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 20L20 0h-2L0 18v2zM0 10L10 0H8L0 8v2zM0 30L30 0h-2L0 28v2zM10 40L40 10v-2L8 40h2zM20 40L40 20v-2L18 40h2zM30 40L40 30v-2L28 40h2z'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.2;
+    z-index: -1;
   }
   .glassmorphism {
-    background: rgba(26, 11, 46, 0.35); /* Thoda dark background */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 255, 255, 0.3); /* Cyan border */
-    border-radius: 16px;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1); /* Subtle glow */
-    transition: all 0.3s ease;
+    background: rgba(15, 7, 32, 0.4); /* More transparent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 170, 255, 0.3); /* Electric cyan border */
+    border-radius: 4px; /* Sharper edges for cyberpunk feel */
+    box-shadow: 
+      0 0 20px rgba(0, 170, 255, 0.2), /* Cyan glow */
+      inset 0 0 2px rgba(255, 255, 255, 0.1); /* Inner highlight */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(
+      0 5px,      /* Top left corner cut */
+      5px 0,      /* Top left corner cut from other side */
+      calc(100% - 5px) 0,  /* Top right corner cut */
+      100% 5px,   /* Top right corner cut from other side */
+      100% calc(100% - 5px), /* Bottom right corner cut */
+      calc(100% - 5px) 100%, /* Bottom right corner cut from other side */
+      5px 100%,   /* Bottom left corner cut */
+      0 calc(100% - 5px)    /* Bottom left corner cut from other side */
+    ); /* Cyberpunk angled corners */
+  }
+
+  .glassmorphism::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(0, 170, 255, 0.1) 0%, /* Cyan */
+      rgba(196, 30, 58, 0.1) 25%, /* Red */
+      rgba(142, 68, 173, 0.1) 50%, /* Purple */
+      rgba(52, 152, 219, 0.1) 75% /* Blue */
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glassmorphism:hover::before {
+    opacity: 1;
   }
 
   .glassmorphism:hover {
-    border-color: rgba(0, 255, 255, 0.6);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-    transform: translateY(-5px);
+    border-color: rgba(0, 170, 255, 0.5);
+    box-shadow: 
+      0 10px 30px rgba(0, 170, 255, 0.2),
+      inset 0 1px 0px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px) scale(1.01);
   }
+}
+
+/* Animated Background Styles */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: var(--color);
+  box-shadow: 0 0 20px var(--color), 0 0 40px var(--color);
+  opacity: 0.9;
+  animation: float var(--duration) ease-in-out var(--delay) infinite;
+  z-index: 1;
+}
+
+/* Code-like particles - add digital feel */
+.particle::after {
+  content: attr(data-code);
+  position: absolute;
+  font-size: 4px;
+  color: var(--color);
+  white-space: nowrap;
+  opacity: 0.7;
+  text-shadow: 0 0 5px var(--color);
+  transform: translate(-50%, -50%);
+}
+
+/* Add falling code particles - Matrix-style */
+.matrix-code {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.code-column {
+  position: absolute;
+  top: -20%;
+  width: 2px;
+  height: 120%;
+  color: #00aaff;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  opacity: 0.5;
+  animation: code-fall var(--fall-duration) var(--fall-delay) linear infinite;
+}
+
+.code-column::after {
+  content: attr(data-code);
+  position: absolute;
+  top: 0;
+  left: 0;
+  writing-mode: vertical-rl;
+  letter-spacing: 6px;
+}
+
+@keyframes code-fall {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--opacity, 0.5);
+  }
+  90% {
+    opacity: var(--opacity, 0.5);
+  }
+  100% {
+    transform: translateY(105%);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+  25% {
+    transform: translate(60px, -40px) scale(1.4);
+    opacity: 0.9;
+    filter: brightness(1.5);
+  }
+  50% {
+    transform: translate(120px, 30px) scale(0.9);
+    opacity: 0.6;
+    filter: brightness(1.2);
+  }
+  75% {
+    transform: translate(50px, 50px) scale(1.3);
+    opacity: 0.7;
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+}
+
+/* Additional keyframes for more dynamic animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.4);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Cursor blink animation for buttons */
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor::after {
+  content: "_";
+  animation: cursor-blink 1s step-end infinite;
+  margin-left: 2px;
+  color: #00aaff;
+}
+
+/* Mouse follower styles */
+.mouse-follower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 170, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: screen;
+}
+
+.mouse-follower.active {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 170, 255, 0.3);
+  transition-duration: 0.1s;
+}
+
+/* Animated gradient background */
+.animated-gradient {
+  background: linear-gradient(
+    -45deg, 
+    rgba(0, 170, 255, 0.1), 
+    rgba(142, 68, 173, 0.1), 
+    rgba(240, 18, 254, 0.1), 
+    rgba(0, 112, 243, 0.1)
+  );
+  background-size: 400% 400%;
+  animation: gradient-background 10s ease infinite;
+}
+
+@keyframes gradient-background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation delay utilities */
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+.animation-delay-3000 {
+  animation-delay: 3000ms;
+}
+
+/* Additional animation keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: rgba(0, 170, 255, 0.3);
+  }
+  50% {
+    border-color: rgba(57, 255, 20, 0.5); /* Electric lime */
+  }
+}
+
+@keyframes text-flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(0, 170, 255, 0.8);
+  }
+  5%, 95% {
+    opacity: 0.9;
+    text-shadow: none;
+    transform: translateX(-1px);
+  }
+  10% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+    transform: translateX(1px);
+  }
+  15%, 85% {
+    opacity: 0.9;
+    text-shadow: none;
+    transform: translateX(-2px);
+  }
+  50%, 75% {
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.8);
+    transform: translateX(0);
+  }
+}
+
+/* Character reveal animation */
+.typing-reveal {
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Cyberpunk glitchy text effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 
+      0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+      0 0.025em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 
+      0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+      0 0.025em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: 
+      -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: 
+      -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 
+      0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75),
+      0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 
+      0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75),
+      0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: 
+      -0.025em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+/* Cyberpunk Hackathon Card Styling */
+.tech-card {
+  background: rgba(12, 6, 31, 0.8);
+  border-radius: 4px; /* Sharper corners for tech look */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 170, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  clip-path: polygon(
+    0 10px,      
+    10px 0,      
+    calc(100% - 0px) 0,  
+    100% 10px,   
+    100% calc(100% - 0px), 
+    calc(100% - 10px) 100%, 
+    0px 100%,   
+    0 calc(100% - 10px)    
+  ); /* Cyberpunk angled corners */
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 170, 255, 0.1),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+/* Terminal-like top bar */
+.tech-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #00aaff, #ff3366, #7928ca, #0070f3);
+}
+
+.tech-card:hover::before {
+  left: 100%;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 170, 255, 0.6);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 170, 255, 0.3),
+    inset 0 0 10px rgba(0, 170, 255, 0.1);
+}
+
+/* Neon text effect */
+.neon-text {
+  text-shadow: 
+    0 0 5px rgba(0, 170, 255, 0.8),
+    0 0 10px rgba(0, 170, 255, 0.5),
+    0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.neon-text-lime {
+  text-shadow: 
+    0 0 5px rgba(57, 255, 20, 0.8),
+    0 0 10px rgba(57, 255, 20, 0.5),
+    0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+.neon-text-purple {
+  text-shadow: 
+    0 0 5px rgba(142, 68, 173, 0.8),
+    0 0 10px rgba(142, 68, 173, 0.5),
+    0 0 15px rgba(142, 68, 173, 0.3);
+}
+
+/* Glitchy text class */
+.glitch-text {
+  animation: glitch 2.5s infinite;
+  position: relative;
+  display: inline-block;
+}
+
+/* Cyberpunk border */
+.cyber-border {
+  position: relative;
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  clip-path: polygon(
+    0 10px,      
+    10px 0,      
+    calc(100% - 0px) 0,  
+    100% 10px,   
+    100% calc(100% - 0px), 
+    calc(100% - 10px) 100%, 
+    0px 100%,   
+    0 calc(100% - 10px)    
+  );
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+}
+
+/* Animated button styles */
+.glow-button {
+  position: relative;
+  background: rgba(15, 7, 32, 0.6);
+  color: #00aaff;
+  border: 1px solid rgba(0, 170, 255, 0.5);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
+  clip-path: polygon(
+    0 8px,      
+    8px 0,      
+    calc(100% - 8px) 0,  
+    100% 8px,   
+    100% calc(100% - 8px), 
+    calc(100% - 8px) 100%, 
+    8px 100%,   
+    0 calc(100% - 8px)    
+  );
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 170, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.glow-button:hover {
+  background: rgba(0, 170, 255, 0.1);
+  box-shadow: 
+    0 0 20px rgba(0, 170, 255, 0.5),
+    inset 0 0 10px rgba(0, 170, 255, 0.2);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.glow-button:hover::before {
+  left: 100%;
+}
+
+/* Tech outline button */
+.techOutline-button {
+  position: relative;
+  background: transparent;
+  color: #00aaff;
+  border: 1px solid rgba(0, 170, 255, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Source Code Pro', monospace;
+  clip-path: polygon(
+    0 8px,      
+    8px 0,      
+    calc(100% - 0px) 0,  
+    100% 8px,   
+    100% calc(100% - 0px), 
+    calc(100% - 8px) 100%, 
+    0px 100%,   
+    0 calc(100% - 8px)    
+  );
+}
+
+.techOutline-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 170, 255, 0.5);
+  clip-path: polygon(
+    0 12px,      
+    12px 0,      
+    calc(100% - 0px) 0,  
+    100% 12px,   
+    100% calc(100% - 0px), 
+    calc(100% - 12px) 100%, 
+    0px 100%,   
+    0 calc(100% - 12px)    
+  );
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.techOutline-button:hover {
+  background: rgba(0, 170, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.techOutline-button:hover::after {
+  opacity: 1;
+  inset: -4px;
+}
+
+/* Hacker typing animation */
+.hacker-typing {
+  overflow: hidden;
+  border-right: 0.1em solid rgba(0, 170, 255, 0.7);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgba(0, 170, 255, 0.7) }
+}
+
+/* Terminal text */
+.terminal-text {
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 10, 0.8);
+  color: #00aaff;
+  border-left: 3px solid rgba(0, 170, 255, 0.7);
+}
+
+/* Animated border */
+.border-glow {
+  border: 1px solid transparent;
+  border-radius: 0;
+  background-image: 
+    linear-gradient(to right, rgba(10, 5, 20, 0.95), rgba(10, 5, 20, 0.95)), 
+    linear-gradient(90deg, 
+      rgba(0, 170, 255, 0.7) 0%,
+      rgba(196, 30, 58, 0.7) 25%,
+      rgba(142, 68, 173, 0.7) 50%,
+      rgba(57, 255, 20, 0.7) 75%,
+      rgba(0, 170, 255, 0.7) 100%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  position: relative;
+  animation: border-pulse 3s infinite, shimmer 6s infinite linear;
+  background-size: 100% 100%, 200% 100%;
+  clip-path: polygon(
+    0 10px,      
+    10px 0,      
+    calc(100% - 0px) 0,  
+    100% 10px,   
+    100% calc(100% - 0px), 
+    calc(100% - 10px) 100%, 
+    0px 100%,   
+    0 calc(100% - 10px)    
+  );
+  box-shadow: 
+    0 0 20px rgba(0, 170, 255, 0.3),
+    inset 0 0 10px rgba(0, 170, 255, 0.1);
+}
+
+/* Grid interaction effect for background */
+.interactive-grid {
+  position: relative;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 170, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 170, 255, 0.1) 1px, transparent 1px);
+}
+
+.interactive-grid::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-grid.active::before {
+  opacity: 1;
+}
+
+/* Circuit board background pattern */
+.circuit-pattern {
+  position: relative;
+}
+
+.circuit-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%2300aaff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cpath d='M30 10v20m0 10v20m0 10v10M50 10v80M70 10v20m0 10v20m0 10v10M10 30h20m10 0h20m10 0h20M10 50h80M10 70h20m10 0h20m10 0h20' stroke='%2300aaff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%2300aaff' fill-opacity='0.2'/%3E%3Ccircle cx='30' cy='70' r='2' fill='%2300aaff' fill-opacity='0.2'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%2300aaff' fill-opacity='0.2'/%3E%3Ccircle cx='70' cy='70' r='2' fill='%2300aaff' fill-opacity='0.2'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 5, 20, 0.95);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 170, 255, 0.4);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 170, 255, 0.6);
+}
+
+/* Scan line effect */
+.scan-lines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 51%,
+    transparent 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.1;
 }

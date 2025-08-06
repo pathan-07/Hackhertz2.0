@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Instagram, Linkedin } from 'lucide-react';
+import { ClientOnly } from '@/components/ui/client-only';
 
 export function Footer() {
 
@@ -28,10 +29,14 @@ export function Footer() {
           <h3 className="font-bold text-lg mb-4">Follow Us</h3>
           <div className="flex justify-center md:justify-start gap-6">
             <Link href="#" aria-label="Instagram">
-              <Instagram className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+              <ClientOnly>
+                <Instagram className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+              </ClientOnly>
             </Link>
             <Link href="#" aria-label="LinkedIn">
-              <Linkedin className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+              <ClientOnly>
+                <Linkedin className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+              </ClientOnly>
             </Link>
           </div>
         </div>

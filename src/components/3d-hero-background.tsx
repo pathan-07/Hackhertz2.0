@@ -1,9 +1,10 @@
 'use client';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Icosahedron } from '@react-three/drei';
 import type * as THREE from 'three';
 
+// Separate the Scene component
 function Scene() {
   const meshRef = useRef<THREE.Mesh>(null!);
 
@@ -25,7 +26,8 @@ function Scene() {
   );
 }
 
-export function ThreeDBackground() {
+// Main component - using React.memo to prevent unnecessary re-renders
+const ThreeDBackground = React.memo(function ThreeDBackground() {
   return (
     <div className="absolute inset-0 z-0">
       <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
@@ -33,4 +35,10 @@ export function ThreeDBackground() {
       </Canvas>
     </div>
   );
-}
+});
+
+ThreeDBackground.displayName = 'ThreeDBackground';
+
+// Export as both default and named export to support different import styles
+export default ThreeDBackground;
+export { ThreeDBackground };
