@@ -1,5 +1,6 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 
 // Dynamically import the robot animation
@@ -58,25 +59,42 @@ export function TimelineSection() {
       </div>
       <div className="relative max-w-4xl mx-auto">
         <div className="absolute left-4 md:left-1/2 w-1 h-full bg-border/50 -translate-x-1/2"></div>
-        {timelineEvents.map((event, index) => (
-          <div key={event.title} className="relative pl-8 md:pl-0 mb-8">
-             <div className="md:flex items-center">
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'}`}>
+        {timelineEvents.map((event, index) => {
+          const isLeft = index % 2 !== 0;
+          return (
+            <div key={event.title} className="relative pl-8 md:pl-0 mb-8">
+              <div
+                className={cn('md:flex items-center', {
+                  'md:justify-end': isLeft,
+                })}
+              >
+                <div
+                  className={cn('md:w-1/2', {
+                    'md:pr-8 md:text-right': !isLeft,
+                    'md:pl-8 md:text-left': isLeft,
+                  })}
+                >
                   <Card variant="tech">
-                     <CardHeader>
-                        <CardTitle>
-                            <span className="text-gradient font-bold">{event.day}:</span> {event.title}
-                        </CardTitle>
-                     </CardHeader>
-                     <CardContent>
-                        <p className="text-muted-foreground">{event.description}</p>
-                     </CardContent>
+                    <CardHeader>
+                      <CardTitle>
+                        <span className="text-gradient font-bold">
+                          {event.day}:
+                        </span>{' '}
+                        {event.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">
+                        {event.description}
+                      </p>
+                    </CardContent>
                   </Card>
                 </div>
+              </div>
+              <div className="absolute top-1 left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2 border-4 border-background"></div>
             </div>
-            <div className="absolute top-1 left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2 border-4 border-background"></div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

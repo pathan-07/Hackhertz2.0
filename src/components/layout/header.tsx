@@ -4,7 +4,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ClientOnly } from '@/components/ui/client-only';
@@ -111,21 +118,27 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background/90 backdrop-blur-sm p-0">
-                <nav className="flex flex-col items-center justify-center h-full gap-8">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetDescription className="sr-only">
+                  Main navigation menu
+                </SheetDescription>
+              </SheetHeader>
+              <nav className="flex flex-col items-center justify-center h-full gap-8">
                 {navLinks.map((link) => (
-                    <Link
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={closeMobileMenu}
                     className="text-2xl text-muted-foreground hover:text-foreground transition-colors"
-                    >
+                  >
                     {link.label}
-                    </Link>
+                  </Link>
                 ))}
                 <Button asChild size="lg" className="text-xl py-6 px-8 mt-8" onClick={closeMobileMenu}>
-                    <Link href="/register">INITIALIZE</Link>
+                  <Link href="/register">INITIALIZE</Link>
                 </Button>
-                </nav>
+              </nav>
             </SheetContent>
           </Sheet>
         </div>

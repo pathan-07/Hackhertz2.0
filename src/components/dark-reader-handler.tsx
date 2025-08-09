@@ -6,20 +6,46 @@ import { useEffect } from 'react';
 // It should be used at the root layout of your application
 export function DarkReaderHandler() {
   useEffect(() => {
-    // Remove Dark Reader attributes from SVG elements after page load
-    // This helps avoid hydration mismatches caused by the Dark Reader extension
+    // Disable Dark Reader extension on this site completely
+    const disableDarkReader = () => {
+      // Insert a meta tag to disable Dark Reader
+      const meta = document.createElement('meta');
+      meta.name = 'darkreader-lock';
+      meta.content = 'true';
+      document.head.appendChild(meta);
+      
+      // Insert a style element with CSS that disables Dark Reader effects
+      const style = document.createElement('style');
+      style.textContent = `
+        /* Force disable Dark Reader effects */
+        html {
+          --darkreader-neutral-background: none !important;
+          --darkreader-neutral-text: none !important;
+          --darkreader-selection-background: none !important;
+          --darkreader-selection-text: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+    };
+    
+    // Remove Dark Reader attributes that may cause hydration errors
     const removeDarkReaderAttrs = () => {
       try {
-        document.querySelectorAll('[data-darkreader-inline-stroke]').forEach(el => {
-          el.removeAttribute('data-darkreader-inline-stroke');
-        });
+        // Remove all Dark Reader specific attributes
+        const darkReaderAttrs = [
+          'data-darkreader-inline-stroke',
+          'data-darkreader-inline-fill',
+          'data-darkreader-inline-color',
+          'data-darkreader-inline-bgcolor',
+          'data-darkreader-inline-border',
+          'data-darkreader-inline-boxshadow',
+          'data-darkreader-inline-filter'
+        ];
         
-        document.querySelectorAll('[data-darkreader-inline-fill]').forEach(el => {
-          el.removeAttribute('data-darkreader-inline-fill');
-        });
-        
-        document.querySelectorAll('[data-darkreader-inline-color]').forEach(el => {
-          el.removeAttribute('data-darkreader-inline-color');
+        darkReaderAttrs.forEach(attr => {
+          document.querySelectorAll(`[${attr}]`).forEach(el => {
+            el.removeAttribute(attr);
+          });
         });
         
         // Remove inline styles with darkreader variables
@@ -37,23 +63,33 @@ export function DarkReaderHandler() {
       }
     };
 
-    // Run once after initial render
+    // First disable Dark Reader completely
+    disableDarkReader();
+    
+    // Then remove any existing Dark Reader attributes
     removeDarkReaderAttrs();
     
-    // Also set up a mutation observer to handle dynamically added elements
-    const observer = new MutationObserver((mutations) => {
+    // Set up a mutation observer to handle any new elements or changes
+    const observer = new MutationObserver(() => {
       removeDarkReaderAttrs();
     });
     
     observer.observe(document.body, { 
       childList: true, 
       subtree: true, 
-      attributes: true, 
-      attributeFilter: ['style', 'data-darkreader-inline-stroke', 'data-darkreader-inline-fill', 'data-darkreader-inline-color'] 
+      attributes: true 
     });
+
+    // Also handle after each route change for Next.js
+    if (typeof window !== 'undefined') {
+      window.addEventListener('popstate', removeDarkReaderAttrs);
+    }
 
     return () => {
       observer.disconnect();
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('popstate', removeDarkReaderAttrs);
+      }
     };
   }, []);
 

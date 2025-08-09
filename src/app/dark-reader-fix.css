@@ -1,16 +1,51 @@
 /* Anti Dark Reader CSS to prevent hydration mismatches */
-svg {
-  /* !important is used to override Dark Reader */
-  --darkreader-inline-stroke: none !important;
-  --darkreader-inline-fill: none !important;
-  --darkreader-inline-color: currentColor !important;
+
+/* This CSS disables Dark Reader effects for all elements */
+:root {
+  --darkreader-neutral-background: none !important;
+  --darkreader-neutral-text: none !important;
+  --darkreader-selection-background: none !important;
+  --darkreader-selection-text: none !important;
 }
 
-/* Prevent Dark Reader from adding inline styles that would cause hydration mismatches */
-[data-darkreader-inline-stroke],
+/* Reset all Dark Reader styles for all elements */
+html, body, *, *::before, *::after {
+  /* !important is used to override Dark Reader */
+  --darkreader-inline-bgcolor: initial !important;
+  --darkreader-inline-bgimage: initial !important;
+  --darkreader-inline-border: initial !important;
+  --darkreader-inline-border-bottom: initial !important;
+  --darkreader-inline-border-left: initial !important;
+  --darkreader-inline-border-right: initial !important;
+  --darkreader-inline-border-top: initial !important;
+  --darkreader-inline-boxshadow: initial !important;
+  --darkreader-inline-color: initial !important;
+  --darkreader-inline-fill: initial !important;
+  --darkreader-inline-filter: initial !important;
+  --darkreader-inline-stroke: initial !important;
+  --darkreader-inline-outline: initial !important;
+  --darkreader-inline-text-decoration-color: initial !important;
+  --darkreader-inline-text-fill-color: initial !important;
+  --darkreader-inline-text-shadow: initial !important;
+}
+
+/* Target elements with Dark Reader attributes specifically */
+[data-darkreader-inline-bgcolor],
+[data-darkreader-inline-bgimage],
+[data-darkreader-inline-border],
+[data-darkreader-inline-border-bottom],
+[data-darkreader-inline-border-left],
+[data-darkreader-inline-border-right],
+[data-darkreader-inline-border-top],
+[data-darkreader-inline-boxshadow],
+[data-darkreader-inline-color],
 [data-darkreader-inline-fill],
-[data-darkreader-inline-color] {
-  --darkreader-inline-stroke: none !important;
-  --darkreader-inline-fill: none !important;
-  --darkreader-inline-color: currentColor !important;
+[data-darkreader-inline-filter],
+[data-darkreader-inline-stroke],
+[data-darkreader-inline-outline],
+[data-darkreader-inline-text-decoration-color],
+[data-darkreader-inline-text-fill-color],
+[data-darkreader-inline-text-shadow] {
+  /* Reset any Dark Reader attributes */
+  all: revert !important;
 }

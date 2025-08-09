@@ -1,16 +1,9 @@
+import { HeroSection } from '@/components/sections/hero-section';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { HeroSection } from '@/components/sections/hero-section';
-import { AboutSection } from '@/components/sections/about-section';
-import { DomainsSection } from '@/components/sections/domains-section';
-import { TimelineSection } from '@/components/sections/timeline-section';
-import { PrizesSection } from '@/components/sections/prizes-section';
-import { JudgesSection } from '@/components/sections/judges-section';
-import { SponsorsSection } from '@/components/sections/sponsors-section';
-import { FaqSection } from '@/components/sections/faq-section';
-import { AnimatedSection } from '@/components/animated-section';
 import { ClientWrapper } from '@/components/client-wrapper';
 import CyberpunkBackgroundWrapper from '@/components/cyberpunk-background-wrapper';
+import { SectionsRenderer } from '@/components/sections-renderer';
 
 // Disabling hydration warnings in development to improve developer experience
 export const fetchCache = 'force-no-store';
@@ -27,30 +20,9 @@ export default function Home() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
+          {/* The HeroSection is loaded statically because it's the first thing users see. */}
           <HeroSection />
-          <div className="space-y-24 md:space-y-32 py-24 md:py-32">
-            <AnimatedSection>
-                <AboutSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <DomainsSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <TimelineSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <PrizesSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <JudgesSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <SponsorsSection />
-            </AnimatedSection>
-             <AnimatedSection>
-                <FaqSection />
-            </AnimatedSection>
-          </div>
+          <SectionsRenderer />
         </main>
         <Footer />
       </div>

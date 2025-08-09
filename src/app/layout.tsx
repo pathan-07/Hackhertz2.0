@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { DarkReaderHandler } from '@/components/dark-reader-handler';
 import { DarkReaderHeadScript } from '@/components/dark-reader-head-script';
 import { darkReaderMetadata, darkReaderViewport } from '@/lib/dark-reader-metadata';
+import { ClientOnly } from '@/components/ui/client-only';
 
 const sourceCodePro = Source_Code_Pro({
   subsets: ['latin'],
@@ -47,7 +48,9 @@ export default function RootLayout({
         <DarkReaderHeadScript />
       </head>
       <body className={cn('antialiased')}>
-        <DarkReaderHandler />
+        <ClientOnly>
+          <DarkReaderHandler />
+        </ClientOnly>
         {children}
         <Toaster />
       </body>

@@ -17,6 +17,24 @@ const AnimatedCssBackground = dynamic(
   }
 );
 
+// Import the digital wireframe head (client-only version)
+const DigitalWireframeHead = dynamic(
+  () => import('../digital-wireframe-head-client'),
+  {
+    ssr: false,
+    loading: () => null
+  }
+);
+
+// Import the digital pathway (client-only version)
+const DigitalPathway = dynamic(
+  () => import('../digital-pathway-client'),
+  {
+    ssr: false,
+    loading: () => null
+  }
+);
+
 // Animation for the logo image
 const logoVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -35,17 +53,24 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
        {/* Use the CSS-based animated background */}
        <AnimatedCssBackground />
+       
+       {/* Add the digital wireframe head from the image */}
+       <DigitalWireframeHead />
+       
+       {/* Add the digital pathway from the image */}
+       <DigitalPathway />
+       
        <div
-        className="absolute inset-0 -z-10 h-full w-full bg-[#09050f] bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        className="absolute inset-0 -z-10 h-full w-full bg-[#050215] bg-[linear-gradient(to_right,rgba(255,0,90,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(120,0,255,0.03)_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       
       {/* Reduced the gap from gap-6 to gap-4 for tighter spacing */}
-      <div className="relative z-10 container mx-auto flex flex-col items-center gap-4">
+      <div className="relative z-10 container mx-auto flex flex-col items-center gap-2 md:gap-4 px-4">
         
         <motion.div 
           variants={logoVariants} 
           initial="hidden" 
           animate="visible" 
-          className="w-full max-w-2xl mx-auto" // Increased max-width slightly for better presence
+          className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
         >
           <Image 
             src={logoImage} 
@@ -54,24 +79,22 @@ export function HeroSection() {
             height={200}
             className="w-full h-auto object-contain"
             style={{
-              // This CSS trick makes the black background of the PNG transparent
-              mixBlendMode: 'screen', 
-              filter: "drop-shadow(0 0 12px rgba(112, 0, 255, 0.6))", // Enhanced glow
+              mixBlendMode: "screen", 
+              filter: "drop-shadow(0 0 15px rgba(255, 0, 90, 0.7)) drop-shadow(0 0 30px rgba(120, 0, 255, 0.5))"
             }}
             priority
           />
         </motion.div>
 
-        <p className="text-xl md:text-2xl font-bold text-gradient max-w-3xl">
+        <p className="text-lg md:text-2xl font-bold text-gradient max-w-3xl">
           Code the Future. Enter the Digital Realm.
         </p>
 
-        <p className="text-lg text-muted-foreground max-w-3xl">
+        <p className="text-sm md:text-lg text-muted-foreground max-w-3xl text-center">
           Join us for HackHertz - an innovative 2-day offline hackathon where creativity meets technology. Build groundbreaking solutions, learn from industry experts, and compete for amazing prizes!
         </p>
 
-        {/* Reduced margin-top from mt-8 to mt-6 */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-6">
           <Button asChild size="lg" variant="glow" pulse>
             <Link href="/register">INITIALIZE</Link>
           </Button>
@@ -80,11 +103,10 @@ export function HeroSection() {
           </Button>
         </div>
 
-        {/* Reduced margin-top from mt-8 to mt-6 */}
-        <div className="flex flex-wrap justify-center gap-4 mt-6">
-          <Badge variant="outline" className="text-lg py-2 px-4 border-orange-500/50 bg-[#0c061f]/60 backdrop-blur-sm hover:border-orange-500/80 transition-all duration-300">48:00:00 RUNTIME</Badge>
-          <Badge variant="outline" className="text-lg py-2 px-4 border-purple-500/50 bg-[#0c061f]/60 backdrop-blur-sm hover:border-purple-500/80 transition-all duration-300">TEAM.SYNC()</Badge>
-          <Badge variant="outline" className="text-lg py-2 px-4 border-blue-500/50 bg-[#0c061f]/60 backdrop-blur-sm hover:border-blue-500/80 transition-all duration-300">REWARDS.EXE</Badge>
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-6">
+          <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#ff005a]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#ff005a]/90 transition-all duration-300 shadow-[0_0_10px_rgba(255,0,90,0.3)]">48:00:00 RUNTIME</Badge>
+          <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#7800ff]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#7800ff]/90 transition-all duration-300 shadow-[0_0_10px_rgba(120,0,255,0.3)]">TEAM.SYNC()</Badge>
+          <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#00c8ff]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#00c8ff]/90 transition-all duration-300 shadow-[0_0_10px_rgba(0,200,255,0.3)]">REWARDS.EXE</Badge>
         </div>
       </div>
     </section>

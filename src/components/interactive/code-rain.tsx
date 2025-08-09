@@ -50,8 +50,13 @@ export const CodeRain = ({
       const randomSpeed = (0.5 + Math.random() * 1.5) * speed;
       const randomOpacity = 0.1 + Math.random() * 0.4 * opacity;
       
+      // Colors inspired by the neon wireframe from the image
+      const colors = ['#ff005a', '#9500ff', '#00c8ff', '#d400ff'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
       // Set data code attribute with random string
       column.setAttribute('data-code', generateCodeString(randomLength));
+      column.style.color = randomColor;
       
       // Set CSS variables
       column.style.setProperty('--x', `${randomX}px`);
