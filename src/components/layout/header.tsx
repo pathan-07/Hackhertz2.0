@@ -25,6 +25,7 @@ const navLinks = [
   { href: '#prizes', label: 'Prizes' },
   { href: '#sponsors', label: 'Sponsors' },
   { href: '#faq', label: 'FAQ' },
+  { href: '#venue', label: 'Venue' },
 ];
 
 export function Header() {

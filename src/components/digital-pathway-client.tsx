@@ -32,7 +32,7 @@ const PathwayCanvas = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Draw the perspective grid (like a road/pathway)
-      const horizonY = canvas.height * 0.55; // Horizon line position
+      const horizonY = canvas.height * 0.65; // Horizon line position (lowered from 0.55 to 0.65)
       const vanishingPointX = canvas.width / 2; // Center of the screen
       
       // Set gradient for the pathway

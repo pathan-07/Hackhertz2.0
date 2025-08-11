@@ -12,7 +12,7 @@ const SectionLoader = () => (
   </div>
 );
 
-// Dynamically import all sections that are "below the fold"
+// Reintroducing all sections
 const AboutSection = dynamic(() => import('@/components/sections/about-section').then(mod => mod.AboutSection), {
   loading: () => <SectionLoader />,
   ssr: false,
@@ -43,16 +43,21 @@ const FaqSection = dynamic(() => import('@/components/sections/faq-section').the
   ssr: false,
 });
 
+const VenueSection = dynamic(() => import('@/components/sections/venue-section').then(mod => mod.VenueSection), {
+  loading: () => <SectionLoader />,
+  ssr: false,
+});
+
 export function SectionsRenderer() {
   return (
     <div className="space-y-24 md:space-y-32 py-24 md:py-32">
-      {/* All subsequent sections are now lazy-loaded. */}
       <AboutSection />
       <DomainsSection />
       <TimelineSection />
       <PrizesSection />
       <SponsorsSection />
       <FaqSection />
+      <VenueSection />
     </div>
   );
 }

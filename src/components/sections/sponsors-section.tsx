@@ -7,20 +7,14 @@ const sponsors = [
     dataAiHint: 'college logo',
     title: 'Title Sponsor',
   },
-  {
-    name: 'Computer Department',
-    logo: 'https://placehold.co/300x100.png',
-    dataAiHint: 'department logo',
-    title: 'Academic Partner',
-  },
 ];
 
 export function SponsorsSection() {
   return (
     <section id="sponsors" className="container mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold">Our <span className="text-gradient">Supporters</span></h2>
-        <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Proudly supported by our institutional partners.</p>
+        <h2 className="text-4xl md:text-5xl font-bold">Our <span className="text-gradient">Organizer</span></h2>
+        <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Proudly supported by our institute.</p>
       </div>
       <div className="flex flex-wrap justify-center items-center gap-12">
         {sponsors.map((sponsor) => (

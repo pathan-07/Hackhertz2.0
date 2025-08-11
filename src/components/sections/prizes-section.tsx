@@ -19,11 +19,6 @@ const prizes = [
     title: '3rd winner',
     description: '2nd Runner-up teams will be rewarded for their outstanding efforts! Includes a prize , 2nd runner-up certificates and exclusive swag.',
   },
-  {
-    icon: <Gift className="w-12 h-12 text-purple-400" />,
-    title: 'Swags for every participants',
-    description: 'All participants will receive exclusive hackathon swag as a token of appreciation for their participation and effort.',
-  },
 ];
 
 const cardVariants = {
