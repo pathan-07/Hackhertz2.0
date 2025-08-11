@@ -80,7 +80,7 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-6">
           <Button asChild size="lg" variant="glow" pulse>
-            <Link href="/register">INITIALIZE</Link>
+            <Link href="/register">Register</Link>
           </Button>
           <Button asChild size="lg" variant="techOutline">
             <a href="#about">EXPLORE</a>

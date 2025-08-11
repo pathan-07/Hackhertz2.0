@@ -104,7 +104,7 @@ export function Header() {
         </nav>
         <div className="hidden md:block">
           <Button asChild>
-            <Link href="/register">INITIALIZE</Link>
+            <Link href="/register">Register</Link>
           </Button>
         </div>
         <div className="md:hidden">
@@ -135,7 +135,7 @@ export function Header() {
                   </Link>
                 ))}
                 <Button asChild size="lg" className="text-xl py-6 px-8 mt-8" onClick={closeMobileMenu}>
-                  <Link href="/register">INITIALIZE</Link>
+                  <Link href="/register">Register</Link>
                 </Button>
               </nav>
             </SheetContent>
