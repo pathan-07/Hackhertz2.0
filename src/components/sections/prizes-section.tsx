@@ -1,23 +1,28 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Trophy, Star } from 'lucide-react';
+import { Award, Trophy, Star, Gift } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const prizes = [
   {
     icon: <Trophy className="w-12 h-12 text-yellow-400" />,
-    title: '1st Prize',
-    description: 'The winning team will receive amazing rewards and recognition! Includes a cash prize (TBD), winner certificates, exclusive swag kits, and internship opportunities.',
+    title: '1st winner',
+    description: 'The winning team will receive amazing rewards and recognition! Includes a prize, winner certificates and exclusive swag.',
   },
   {
     icon: <Award className="w-12 h-12 text-slate-300" />,
-    title: '2nd Prize',
-    description: 'Runner-up teams will be rewarded for their outstanding efforts! Includes a cash prize (TBD), runner-up certificates, tech gadgets, and special recognition.',
+    title: '2nd winner',
+    description: 'Runner-up teams will be rewarded for their outstanding efforts! Includes a prize , runner-up certificates and exclusive swag.',
   },
   {
     icon: <Star className="w-12 h-12 text-orange-400" />,
-    title: 'Special Awards',
-    description: 'Special category winners will receive unique prizes for Most Innovative Solution, Best Technical Implementation, Best UI/UX Design, and People\'s Choice Award.',
+    title: '3rd winner',
+    description: '2nd Runner-up teams will be rewarded for their outstanding efforts! Includes a prize , 2nd runner-up certificates and exclusive swag.',
+  },
+  {
+    icon: <Gift className="w-12 h-12 text-purple-400" />,
+    title: 'Swags for every participants',
+    description: 'All participants will receive exclusive hackathon swag as a token of appreciation for their participation and effort.',
   },
 ];
 

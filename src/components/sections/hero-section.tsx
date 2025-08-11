@@ -8,15 +8,6 @@ import dynamic from 'next/dynamic';
 // Import the logo image directly
 import logoImage from '@/assets/hackhertz.png';
 
-// Import the CSS-based animated background
-const AnimatedCssBackground = dynamic(
-  () => import('../animated-css-background'),
-  { 
-    ssr: false,
-    loading: () => <div className="absolute inset-0 z-0 bg-background"></div>
-  }
-);
-
 // Import the digital wireframe head (client-only version)
 const DigitalWireframeHead = dynamic(
   () => import('../digital-wireframe-head-client'),
@@ -51,13 +42,8 @@ const logoVariants = {
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-       {/* Use the CSS-based animated background */}
-       <AnimatedCssBackground />
-       
-       {/* Add the digital wireframe head from the image */}
+       {/* ADD THESE TWO COMPONENTS to recreate the newtheme.png effect */}
        <DigitalWireframeHead />
-       
-       {/* Add the digital pathway from the image */}
        <DigitalPathway />
        
        <div
@@ -72,12 +58,14 @@ export function HeroSection() {
           animate="visible" 
           className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto"
         >
+          <div className="text-center font-bold mb-4 text-white">Presented by Shree Swaminarayan Institute Of Technology</div>
           <Image 
             src={logoImage} 
             alt="HackHertz Logo" 
             width={600}
             height={200}
             className="w-full h-auto object-contain"
+            // MODIFY these styles to make the logo glow and blend like the head
             style={{
               mixBlendMode: "screen", 
               filter: "drop-shadow(0 0 15px rgba(255, 0, 90, 0.7)) drop-shadow(0 0 30px rgba(120, 0, 255, 0.5))"
@@ -86,12 +74,8 @@ export function HeroSection() {
           />
         </motion.div>
 
-        <p className="text-lg md:text-2xl font-bold text-gradient max-w-3xl">
-          Code the Future. Enter the Digital Realm.
-        </p>
-
         <p className="text-sm md:text-lg text-muted-foreground max-w-3xl text-center">
-          Join us for HackHertz - an innovative 2-day offline hackathon where creativity meets technology. Build groundbreaking solutions, learn from industry experts, and compete for amazing prizes!
+          Join us on 14th & 15th September for HackHertz - an innovative 30 Hours offline hackathon where creativity meets technology. Build groundbreaking solutions, learn from industry experts, and compete for amazing prizes!
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-6">

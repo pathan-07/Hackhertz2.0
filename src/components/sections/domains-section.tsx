@@ -4,6 +4,11 @@ import { BrainCircuit, Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const domains = [
+   {
+    icon: <BrainCircuit className="w-10 h-10 text-gradient" />,
+    title: 'Web Development',
+    description: 'Create dynamic and responsive web applications using modern technologies and frameworks.',
+  },
   {
     icon: <BrainCircuit className="w-10 h-10 text-gradient" />,
     title: 'AI & Machine Learning',

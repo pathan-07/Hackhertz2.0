@@ -33,11 +33,6 @@ const PrizesSection = dynamic(() => import('@/components/sections/prizes-section
   ssr: false,
 });
 
-const JudgesSection = dynamic(() => import('@/components/sections/judges-section').then(mod => mod.JudgesSection), {
-  loading: () => <SectionLoader />,
-  ssr: false,
-});
-
 const SponsorsSection = dynamic(() => import('@/components/sections/sponsors-section').then(mod => mod.SponsorsSection), {
   loading: () => <SectionLoader />,
   ssr: false,
@@ -56,7 +51,6 @@ export function SectionsRenderer() {
       <DomainsSection />
       <TimelineSection />
       <PrizesSection />
-      <JudgesSection />
       <SponsorsSection />
       <FaqSection />
     </div>

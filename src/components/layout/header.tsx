@@ -23,7 +23,6 @@ const navLinks = [
   { href: '#domains', label: 'Domains' },
   { href: '#timeline', label: 'Timeline' },
   { href: '#prizes', label: 'Prizes' },
-  { href: '#judges', label: 'Judges' },
   { href: '#faq', label: 'FAQ' },
 ];
 

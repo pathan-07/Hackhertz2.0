@@ -12,39 +12,54 @@ const TimelineRobot = dynamic(() => import('@/components/timeline-robot'), {
 const timelineEvents = [
   {
     day: 'Day 1',
-    title: 'Inauguration',
-    description: 'Opening ceremony, rules, and problem statement announcement.',
+    title: 'Registration',
+    description: 'Opening ceremony starts 8:00 AM onwards, rules, and problem statement announcement.',
   },
   {
     day: 'Day 1',
-    title: 'Team Registration',
-    description: 'Team check-ins and workspace allocation.',
+    title: 'Inauguration',
+    description: 'Inauguration ceremony starts 9:30 AM onwards with keynote speakers and sponsors.',
   },
   {
     day: 'Day 1',
     title: 'Building Begins',
-    description: 'Coding and idea execution starts.',
+    description: 'Coding and idea execution starts 10:30 AM onwards.',
   },
   {
     day: 'Day 1',
-    title: 'Mentorship Rounds',
-    description: 'Mentors guide teams with feedback.',
+    title: 'Mid Evaluation',
+    description: 'Documentation round (PPT) starts at 5:00 PM onwards.',
   },
   {
     day: 'Day 2',
-    title: 'Final Touch-ups',
-    description: 'Finalize projects and prepare presentations.',
+    title: 'Final Evaluation',
+    description: 'Finalize projects and prepare video with github repo  starts at 8:00 AM onwards.',
   },
   {
     day: 'Day 2',
-    title: 'Presentations',
-    description: 'Each team pitches to judges.',
+    title: 'Semi-Finalist Declaration',
+    description: 'Selecting top 10 teams at 1:00 PM onwards.',
   },
   {
     day: 'Day 2',
-    title: 'Results & Prize Distribution',
-    description: 'Winners declared and certificates distributed.',
+    title: 'Presentation Round',
+    description: 'Presentation with the final project starts 1:30 PM onwards.',
   },
+    {
+    day: 'Day 2',
+    title: 'Final Round',
+    description: 'Final Evalution starts 3:00 PM onwards.',
+  },
+  {
+    day: 'Day 2',
+    title: 'Winner Decration',
+    description: 'Winners will declare & price distribution starts 3:30 PM onwards.',
+  },  
+  {
+    day: 'Day 2',
+    title: 'Wrapping Up',
+    description: 'Wrapping up everything at 4:00 PM onwards.',
+  },  
 ];
 
 export function TimelineSection() {
