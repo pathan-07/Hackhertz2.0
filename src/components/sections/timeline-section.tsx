@@ -13,52 +13,62 @@ const timelineEvents = [
   {
     day: 'Day 1',
     title: 'Registration',
-    description: 'Opening ceremony starts 8:00 AM onwards, rules, and problem statement announcement.',
+    time: '8:00 AM',
+    description: 'Opening ceremony, rules, and problem statement announcement.',
   },
   {
     day: 'Day 1',
     title: 'Inauguration',
-    description: 'Inauguration ceremony starts 9:30 AM onwards with keynote speakers and sponsors.',
+    time: '9:30 AM',
+    description: 'Inauguration ceremony with keynote speakers and sponsors.',
   },
   {
     day: 'Day 1',
     title: 'Building Begins',
-    description: 'Coding and idea execution starts 10:30 AM onwards.',
+    time: '10:30 AM',
+    description: 'Coding and idea execution begins.',
   },
   {
     day: 'Day 1',
     title: 'Mid Evaluation',
-    description: 'Documentation round (PPT) starts at 5:00 PM onwards.',
+    time: '5:00 PM',
+    description: 'Documentation round (PPT).',
   },
   {
     day: 'Day 2',
     title: 'Final Evaluation',
-    description: 'Finalize projects and prepare video with github repo  starts at 8:00 AM onwards.',
+    time: '8:00 AM',
+    description: 'Finalize projects and prepare video with github repo.',
   },
   {
     day: 'Day 2',
     title: 'Semi-Finalist Declaration',
-    description: 'Selecting top 10 teams at 1:00 PM onwards.',
+    time: '1:00 PM',
+    description: 'Selecting top 10 teams.',
   },
   {
     day: 'Day 2',
     title: 'Presentation Round',
-    description: 'Presentation with the final project starts 1:30 PM onwards.',
-  },
-    {
-    day: 'Day 2',
-    title: 'Final Round',
-    description: 'Final Evalution starts 3:00 PM onwards.',
+    time: '1:30 PM',
+    description: 'Presentation with the final project.',
   },
   {
     day: 'Day 2',
-    title: 'Winner Decration',
-    description: 'Winners will declare & price distribution starts 3:30 PM onwards.',
+    title: 'Final Round',
+    time: '3:00 PM',
+    description: 'Final Evaluation.',
+  },
+  {
+    day: 'Day 2',
+    title: 'Winner Declaration',
+    time: '3:30 PM',
+    description: 'Winners will be declared & prize distribution.',
   },  
   {
     day: 'Day 2',
     title: 'Wrapping Up',
-    description: 'Wrapping up everything at 4:00 PM onwards.',
+    time: '4:00 PM',
+    description: 'Wrapping up everything.',
   },  
 ];
 
@@ -99,6 +109,9 @@ export function TimelineSection() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
+                      <p className="text-primary font-medium mb-1">
+                        {event.time}
+                      </p>
                       <p className="text-muted-foreground">
                         {event.description}
                       </p>

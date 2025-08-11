@@ -75,28 +75,7 @@ const WireframeHeadCanvas = () => {
       // Draw facial features as circuit-like patterns
       drawCircuitPatterns(ctx, centerX, centerY, time);
       
-      // Draw neon circle around the head like in the image
-      ctx.beginPath();
-      ctx.strokeStyle = '#ff005a';
-      ctx.lineWidth = 4;
-      ctx.globalAlpha = 0.9;
-      ctx.arc(centerX, centerY, 240, 0, Math.PI * 2);
-      ctx.stroke();
-      
-      // Glow effect for the neon circle
-      ctx.beginPath();
-      ctx.strokeStyle = '#ff005a';
-      ctx.lineWidth = 2;
-      ctx.globalAlpha = 0.5;
-      ctx.arc(centerX, centerY, 244, 0, Math.PI * 2);
-      ctx.stroke();
-      
-      ctx.beginPath();
-      ctx.strokeStyle = '#ff005a';
-      ctx.lineWidth = 1;
-      ctx.globalAlpha = 0.3;
-      ctx.arc(centerX, centerY, 248, 0, Math.PI * 2);
-      ctx.stroke();
+      // The red circles have been removed as requested
     };
     
     const drawCircuitPatterns = (ctx: CanvasRenderingContext2D, centerX: number, centerY: number, time: number) => {
