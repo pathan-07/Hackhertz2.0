@@ -23,6 +23,7 @@ const navLinks = [
   { href: '#domains', label: 'Domains' },
   { href: '#timeline', label: 'Timeline' },
   { href: '#prizes', label: 'Prizes' },
+  { href: '#sponsors', label: 'Sponsors' },
   { href: '#faq', label: 'FAQ' },
 ];
 
@@ -37,6 +38,30 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Smooth scroll function
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      // Add animation to nav item
+      const label = href.substring(1); // Remove the # from href
+      const el = document.getElementById(`nav-animation-${label}`);
+      if (el) el.classList.add('animate-nav-pulse');
+      setTimeout(() => {
+        if (el) el.classList.remove('animate-nav-pulse');
+      }, 500);
+
+      // Scroll to the section with smooth behavior
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 100, // Offset for header
+        behavior: 'smooth'
+      });
+      
+      // Close mobile menu if open
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -70,22 +95,13 @@ export function Header() {
               key={link.href}
               href={link.href}
               className="text-lg text-muted-foreground hover:text-foreground transition-colors relative group py-1 px-2"
-              onClick={() => {
-                const target = document.querySelector(link.href);
-                if (target) {
-                  const el = document.getElementById('nav-animation-' + link.label.toLowerCase());
-                  if (el) el.classList.add('animate-nav-pulse');
-                  setTimeout(() => {
-                    if (el) el.classList.remove('animate-nav-pulse');
-                  }, 500);
-                }
-              }}
+              onClick={(e) => scrollToSection(e, link.href)}
             >
               <span className="relative z-10">{link.label}</span>
               
               {/* Animated underline effect */}
               <span 
-                id={`nav-animation-${link.label.toLowerCase()}`}
+                id={`nav-animation-${link.href.substring(1)}`}
                 className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 via-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"
               ></span>
               
@@ -128,7 +144,7 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={closeMobileMenu}
+                    onClick={(e) => scrollToSection(e, link.href)}
                     className="text-2xl text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.label}
