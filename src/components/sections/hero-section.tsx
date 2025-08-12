@@ -80,7 +80,7 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-6">
           <Button asChild size="lg" variant="glow" pulse>
-            <Link href="/register">Register</Link>
+            <Link href="https://forms.gle/WN3px2vnANwpdcyAA">Register</Link>
           </Button>
           <Button asChild size="lg" variant="techOutline">
             <a href="#about">EXPLORE</a>
@@ -88,7 +88,7 @@ export function HeroSection() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-6">
-          <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#ff005a]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#ff005a]/90 transition-all duration-300 shadow-[0_0_10px_rgba(255,0,90,0.3)]">48:00:00 RUNTIME</Badge>
+          <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#ff005a]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#ff005a]/90 transition-all duration-300 shadow-[0_0_10px_rgba(255,0,90,0.3)]">30:00:00 RUNTIME</Badge>
           <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#7800ff]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#7800ff]/90 transition-all duration-300 shadow-[0_0_10px_rgba(120,0,255,0.3)]">TEAM.SYNC()</Badge>
           <Badge variant="outline" className="text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 border-[#00c8ff]/60 bg-[#0c061f]/60 backdrop-blur-sm hover:border-[#00c8ff]/90 transition-all duration-300 shadow-[0_0_10px_rgba(0,200,255,0.3)]">REWARDS.EXE</Badge>
         </div>

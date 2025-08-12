@@ -26,9 +26,9 @@ export function AboutSection() {
           <div className="bg-card border border-border p-8 rounded-lg space-y-4">
             <h3 className="text-2xl font-bold text-gradient">Event Details</h3>
             <div className="space-y-2">
-              <p><span className="font-bold text-primary">Team Size:</span> 4-5 members</p>
+              <p><span className="font-bold text-primary">Team Size:</span> 4 members</p>
               <p><span className="font-bold text-primary">Participation Fee:</span> ₹50 per person</p>
-              <p><span className="font-bold text-primary">Food:</span> A food van will be available on campus for participants to purchase food.</p>
+              <p><span className="font-bold text-primary">Food:</span> A food stall will be available on campus for participants to purchase food.</p>
             </div>
           </div>
         </div>

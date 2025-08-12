@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: 'What is the team size?',
-    answer: 'Teams must have a minimum of 4 and a maximum of 5 members. You can register as a team or individually.',
+    answer: 'Teams must have a 4 members. You can register as a team.',
   },
   {
     question: 'Is there a registration fee?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'What about food arrangements?',
-    answer: 'A food van will be arranged inside the college campus. Students can buy food by themselves from the food van.',
+    answer: 'A food stall will be arranged inside the college campus. Students can buy food by themselves from the food stall.',
   },
   {
     question: 'What should I bring?',
