@@ -1,12 +1,13 @@
 import Image from 'next/image';
+import college from '@/assets/college.png';
 import gap3Logo from '@/assets/gap3.png';
 
 const organizers = [
   {
     name: 'Shree Swaminarayan Institute Of Technology',
-    logo: 'https://placehold.co/300x100.png',
+    logo: college,
     dataAiHint: 'college logo',
-    title: 'Title Sponsor',
+    title: 'Organized by',
   },
 ];
 
