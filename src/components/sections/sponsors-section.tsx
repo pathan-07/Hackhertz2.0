@@ -16,7 +16,7 @@ const sponsors = [
     name: 'GAP3',
     logo: gap3Logo,
     dataAiHint: 'sponsor logo',
-    tier: 'Gold',
+    tier: 'Silver',
   },
 ];
 
