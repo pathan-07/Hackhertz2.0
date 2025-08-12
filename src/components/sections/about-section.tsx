@@ -13,7 +13,7 @@ export function AboutSection() {
         transition={{ duration: 0.8 }}
       >
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">What is <span className="text-gradient">HackHertz?</span></h2>
             <p className="text-lg text-muted-foreground mb-4">A 2-day offline hackathon fostering innovation and collaboration.</p>
             <p className="text-muted-foreground mb-4">
