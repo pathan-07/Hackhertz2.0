@@ -34,7 +34,7 @@ export function DomainsSection() {
         <h2 className="text-4xl md:text-5xl font-bold">Problem <span className="text-gradient">Domains</span></h2>
         <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Problem statements across these innovative domains.</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
         {domains.map((domain, index) => (
           <motion.div
             key={domain.title}
@@ -44,6 +44,7 @@ export function DomainsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.03, y: -8 }}
+            className="w-[300px]"
           >
             <Card variant="tech" className="h-full">
                <CardHeader className="flex flex-row items-center gap-4">
