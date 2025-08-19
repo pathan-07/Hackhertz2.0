@@ -1,23 +1,154 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, Bot } from 'lucide-react';
+import { BrainCircuit, Bot, Globe, Cpu, Link } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+
+// Problem Statements data
+const problemStatements = {
+  webDev: [
+    {
+      title: "BharatSkill Connect",
+      subtitle: "A Hyperlocal P2P Skill Exchange & Livelihood Platform",
+      description: `To foster community development and promote the goals of the Atmanirbhar Bharat initiative, this platform will serve as a peer-to-peer (P2P) skill exchange, connecting local 'Gurus' (teachers) with 'Shishyas' (learners) in their vicinity.`,
+      features: [
+        "Secure User Authentication & Profiles",
+        "Skill Listing & Discovery",
+        "Geolocation-Based Search",
+        "In-App Messaging System",
+        "Review and Rating System"
+      ],
+      additionalFeatures: [
+        "Integration with Government Skill Portals",
+        "Vernacular Language Support",
+        "Secure Mini-Payment Integration",
+        "Group Workshop Module"
+      ]
+    },
+    {
+      title: "GramSeva",
+      subtitle: "A Decentralized Digital Haat for Local Services & the Gig Economy",
+      description: "The unorganized service sector in Tier-2/3 cities and rural areas lacks a structured, trustworthy digital platform. This solution will connect local service providers with customers in a secure and transparent environment.",
+      features: [
+        "Robust Task Management",
+        "Real-Time Chat",
+        "Secure Payment Escrow System",
+        "Comprehensive Profile & Reputation System"
+      ],
+      additionalFeatures: [
+        "AI-Powered Matchmaking",
+        "Digital KYC and Verification",
+        "Multilingual Voice-Note Support",
+        "Dispute Resolution Mechanism"
+      ]
+    },
+    {
+      title: "Sahayak",
+      subtitle: "An AI-Powered Multilingual Conversational Platform for University Student Onboarding & Support",
+      description: "An AI-driven conversational assistant that acts as a one-stop source of information for students, available 24/7, providing instant, accurate, and personalized information.",
+      features: [
+        "Natural Language Processing (NLP)",
+        "Comprehensive Knowledge Base",
+        "Web-Based Chat Interface",
+        "Basic Analytics Dashboard"
+      ],
+      additionalFeatures: [
+        "Integration with University ERP",
+        "Multilingual and Voice-Enabled",
+        "Live Agent Handoff",
+        "Proactive Notifications"
+      ]
+    }
+  ],
+  aiMl: [
+    {
+      title: "SecureAttend",
+      subtitle: "A Real-Time, Liveness-Detection Enabled Facial Recognition System for Proctoring and Attendance",
+      description: "An advanced facial recognition system that not only marks attendance but also ensures the authenticity of the individual using liveness detection, making it suitable for high-stakes environments.",
+      features: [
+        "High-Accuracy Face Recognition",
+        "Centralized Attendance Database",
+        "Administrator Dashboard"
+      ],
+      additionalFeatures: [
+        "Robust Liveness Detection",
+        "Mask and Obstruction Handling",
+        "Real-Time Anomaly Alerts",
+        "API for Integration"
+      ]
+    },
+    {
+      title: "Netra",
+      subtitle: "An AI-Powered Dynamic Traffic Flow Optimization System for Smart Cities",
+      description: "An intelligent system that analyzes real-time traffic camera feeds to dynamically control signal timings, thereby optimizing traffic flow, reducing congestion, and enabling faster transit for emergency vehicles.",
+      features: [
+        "Real-Time Vehicle Detection",
+        "Traffic Density Calculation",
+        "Dynamic Signal Timing Logic",
+        "Simulation Dashboard"
+      ],
+      additionalFeatures: [
+        "Emergency Vehicle Preemption",
+        "Predictive Traffic Modeling",
+        "Multi-Junction Coordination",
+        "Pedestrian and Cyclist Detection"
+      ]
+    }
+  ],
+  blockchain: [
+    {
+      title: "BlockCertify",
+      subtitle: "A Decentralized System for Immutable Proof of Originality and Academic Credential Verification",
+      description: "A blockchain-based system where students and researchers can create an immutable, time-stamped proof of their original work and where institutions can issue tamper-proof digital credentials.",
+      features: [
+        "Proof of Originality",
+        "Verification Interface",
+        "Digital Wallet Integration"
+      ],
+      additionalFeatures: [
+        "Verifiable Credential Issuance",
+        "Zero-Knowledge Plagiarism Check",
+        "Decentralized Storage (IPFS)"
+      ]
+    },
+    {
+      title: "AgriTrace",
+      subtitle: "A Blockchain and IoT-Powered Supply Chain Traceability System for Agricultural Produce",
+      description: "A farm-to-fork traceability solution using blockchain, IoT, and QR codes to create a transparent and immutable record of a product's journey, ensuring food safety and empowering both farmers and consumers.",
+      features: [
+        "Asset Tokenization",
+        "Multi-Stakeholder Platform",
+        "QR Code Generation & Scanning",
+        "Immutable Ledger"
+      ],
+      additionalFeatures: [
+        "IoT Sensor Integration",
+        "Smart Contract-Based Payments",
+        "AI-Powered Quality Check",
+        "Integration with Government Portals"
+      ]
+    }
+  ]
+};
 
 const domains = [
-   {
-    icon: <BrainCircuit className="w-10 h-10 text-gradient" />,
-    title: 'Web Development',
-    description: 'Create dynamic and responsive web applications using modern technologies and frameworks.',
+  {
+    icon: <Globe className="w-10 h-10 text-gradient" />,
+    title: 'Web Development & Smart Communication',
+    description: 'Create dynamic and responsive web applications for social impact and smart communication.',
+    key: 'webDev'
   },
   {
-    icon: <BrainCircuit className="w-10 h-10 text-gradient" />,
+    icon: <Cpu className="w-10 h-10 text-gradient" />,
     title: 'AI & Machine Learning',
     description: 'Build intelligent systems that can learn, adapt, and solve complex problems using artificial intelligence.',
+    key: 'aiMl'
   },
   {
-    icon: <Bot className="w-10 h-10 text-gradient" />,
-    title: 'Blockchain',
+    icon: <Link className="w-10 h-10 text-gradient" />,
+    title: 'Blockchain & Decentralized Systems',
     description: 'Create decentralized applications and explore blockchain technology solutions for real-world problems.',
+    key: 'blockchain'
   },
 ];
 
@@ -26,15 +157,51 @@ const cardVariants = {
   animate: { opacity: 1, y: 0 },
 };
 
-export function DomainsSection() {
+const ProblemStatementCard = ({ problem }) => {
   return (
-    <section id="domains" className="container mx-auto">
-      {/* ... Aapka section content yahaan ... */}
+    <Card variant="tech" className="h-full">
+      <CardHeader>
+        <CardTitle className="text-xl text-gradient">{problem.title}</CardTitle>
+        <p className="text-sm font-medium text-muted-foreground">{problem.subtitle}</p>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <p className="text-sm text-muted-foreground">{problem.description}</p>
+        
+        <div>
+          <h4 className="text-sm font-bold mb-2">Must-Have Features:</h4>
+          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+            {problem.features.map((feature, idx) => (
+              <li key={idx}>{feature}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div>
+          <h4 className="text-sm font-bold mb-2">Additional Features:</h4>
+          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+            {problem.additionalFeatures.map((feature, idx) => (
+              <li key={idx}>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export function DomainsSection() {
+  const [activeTab, setActiveTab] = useState(null);
+  
+  return (
+    <section id="domains" className="container mx-auto py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold">Problem <span className="text-gradient">Domains</span></h2>
-        <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Problem statements across these innovative domains.</p>
+        <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+          Explore our innovative problem statements across these cutting-edge domains.
+        </p>
       </div>
-      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+
+      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto mb-16">
         {domains.map((domain, index) => (
           <motion.div
             key={domain.title}
@@ -44,20 +211,54 @@ export function DomainsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.03, y: -8 }}
-            className="w-[300px]"
+            className="w-[320px]"
+            onClick={() => setActiveTab(activeTab === domain.key ? null : domain.key)}
           >
-            <Card variant="tech" className="h-full">
-               <CardHeader className="flex flex-row items-center gap-4">
-                  {domain.icon}
-                  <CardTitle className="text-2xl">{domain.title}</CardTitle>
+            <Card 
+              variant="tech" 
+              className={`h-full cursor-pointer ${activeTab === domain.key ? 'ring-2 ring-primary' : ''}`}
+            >
+              <CardHeader className="flex flex-row items-center gap-4">
+                {domain.icon}
+                <CardTitle className="text-xl">{domain.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{domain.description}</p>
+                <div className="mt-4 text-sm text-primary">
+                  {activeTab === domain.key ? 'Click to close' : 'Click to view problem statements'}
+                </div>
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
+
+      {activeTab && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <h3 className="text-2xl font-bold mb-8 text-center">
+            Problem Statements: <span className="text-gradient">{domains.find(d => d.key === activeTab)?.title}</span>
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {problemStatements[activeTab].map((problem, index) => (
+              <motion.div
+                key={problem.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <ProblemStatementCard problem={problem} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }
