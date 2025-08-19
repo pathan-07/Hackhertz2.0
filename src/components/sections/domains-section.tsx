@@ -1,10 +1,12 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, Bot, Globe, Cpu, Link } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Globe, Cpu, Link, Star, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-// Problem Statements data
+// --- DATA (No changes made here) ---
 const problemStatements = {
   webDev: [
     {
@@ -134,131 +136,150 @@ const problemStatements = {
 const domains = [
   {
     icon: <Globe className="w-10 h-10 text-gradient" />,
-    title: 'Web Development & Smart Communication',
+    title: 'Web Development',
     description: 'Create dynamic and responsive web applications for social impact and smart communication.',
-    key: 'webDev'
+    key: 'webDev' as const
   },
   {
     icon: <Cpu className="w-10 h-10 text-gradient" />,
-    title: 'AI & Machine Learning',
+    title: 'Artificial Intelligence & Machine Learning',
     description: 'Build intelligent systems that can learn, adapt, and solve complex problems using artificial intelligence.',
-    key: 'aiMl'
+    key: 'aiMl' as const
   },
   {
     icon: <Link className="w-10 h-10 text-gradient" />,
-    title: 'Blockchain & Decentralized Systems',
+    title: 'Blockchain',
     description: 'Create decentralized applications and explore blockchain technology solutions for real-world problems.',
-    key: 'blockchain'
+    key: 'blockchain' as const
   },
 ];
 
-const cardVariants = {
-  initial: { opacity: 0, y: 50 },
-  animate: { opacity: 1, y: 0 },
+// --- Animation Variants ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
 };
 
-const ProblemStatementCard = ({ problem }) => {
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// --- Reusable Components ---
+const ProblemStatementCard = ({ problem }: { problem: typeof problemStatements.webDev[0] }) => {
   return (
-    <Card variant="tech" className="h-full">
+    <Card className="bg-background/80 border-border h-full flex flex-col">
       <CardHeader>
         <CardTitle className="text-xl text-gradient">{problem.title}</CardTitle>
         <p className="text-sm font-medium text-muted-foreground">{problem.subtitle}</p>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">{problem.description}</p>
-        
-        <div>
-          <h4 className="text-sm font-bold mb-2">Must-Have Features:</h4>
-          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-            {problem.features.map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <div>
-          <h4 className="text-sm font-bold mb-2">Additional Features:</h4>
-          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-            {problem.additionalFeatures.map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
+      <CardContent className="flex-grow flex flex-col space-y-4">
+        <p className="text-sm text-muted-foreground flex-grow">{problem.description}</p>
+        <div className="space-y-3">
+          <div>
+            <h4 className="text-sm font-bold mb-2 text-foreground">Must-Have Features:</h4>
+            <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+              {problem.features.map((feature, idx) => <li key={idx}>{feature}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-bold mb-2 text-foreground">Additional Features:</h4>
+            <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+              {problem.additionalFeatures.map((feature, idx) => <li key={idx}>{feature}</li>)}
+            </ul>
+          </div>
         </div>
       </CardContent>
     </Card>
   );
 };
 
+// --- Main Section Component ---
 export function DomainsSection() {
-  const [activeTab, setActiveTab] = useState(null);
+  const [selectedDomain, setSelectedDomain] = useState<typeof domains[0] | null>(null);
   
   return (
     <section id="domains" className="container mx-auto py-16">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold">Problem <span className="text-gradient">Domains</span></h2>
-        <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold"
+        >
+          Problem <span className="text-gradient">Domains</span>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto"
+        >
           Explore our innovative problem statements across these cutting-edge domains.
-        </p>
+        </motion.p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto mb-16">
+      {/* --- Domain Selection Cards --- */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto mb-16">
         {domains.map((domain, index) => (
           <motion.div
-            key={domain.title}
-            variants={cardVariants}
-            initial="initial"
-            whileInView="animate"
+            key={domain.key}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.03, y: -8 }}
-            className="w-[320px]"
-            onClick={() => setActiveTab(activeTab === domain.key ? null : domain.key)}
+            className="w-full"
           >
-            <Card 
-              variant="tech" 
-              className={`h-full cursor-pointer ${activeTab === domain.key ? 'ring-2 ring-primary' : ''}`}
-            >
-              <CardHeader className="flex flex-row items-center gap-4">
-                {domain.icon}
-                <CardTitle className="text-xl">{domain.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{domain.description}</p>
-                <div className="mt-4 text-sm text-primary">
-                  {activeTab === domain.key ? 'Click to close' : 'Click to view problem statements'}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Card className="h-full cursor-pointer bg-background/80 border-border hover:ring-2 hover:ring-primary transition-all duration-300">
+                  <CardHeader className="flex flex-row items-center gap-4">
+                    {domain.icon}
+                    <CardTitle className="text-xl">{domain.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{domain.description}</p>
+                    <div className="mt-4 text-sm text-primary font-semibold">
+                      Click to view problem statements
+                    </div>
+                  </CardContent>
+                </Card>
+              </DialogTrigger>
+              <DialogContent className="max-w-6xl w-[95vw] h-[90vh] bg-background/95 backdrop-blur-sm border-border flex flex-col">
+                <DialogHeader className="pr-10">
+                  <DialogTitle className="text-2xl md:text-3xl font-bold">
+                    {domain.title}: <span className="text-gradient">Problem Statements</span>
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="flex-grow overflow-hidden">
+                  <ScrollArea className="h-full pr-6">
+                      <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                      >
+                        {problemStatements[domain.key].map((problem) => (
+                          <motion.div key={problem.title} variants={itemVariants} className="h-full">
+                            <ProblemStatementCard problem={problem} />
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                  </ScrollArea>
                 </div>
-              </CardContent>
-            </Card>
+              </DialogContent>
+            </Dialog>
           </motion.div>
         ))}
       </div>
-
-      {activeTab && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h3 className="text-2xl font-bold mb-8 text-center">
-            Problem Statements: <span className="text-gradient">{domains.find(d => d.key === activeTab)?.title}</span>
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {problemStatements[activeTab].map((problem, index) => (
-              <motion.div
-                key={problem.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <ProblemStatementCard problem={problem} />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }

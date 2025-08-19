@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'What should I bring?',
-    answer: 'Bring your laptop, charger, enthusiasm, and innovative ideas! We\'ll provide workspace and WiFi connectivity.',
+    answer: 'Bring your laptop, charger, Extension board, and Enthusiasm ! We\'ll provide workspace and WiFi connectivity.',
   },
   {
     question: 'Do I need prior experience?',
