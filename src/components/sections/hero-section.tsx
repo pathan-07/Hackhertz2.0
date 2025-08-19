@@ -80,10 +80,25 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-6">
           <Button asChild size="lg" variant="glow" pulse>
-            <Link href="https://forms.gle/WN3px2vnANwpdcyAA"target='_blank'>Register</Link>
+            <Link href="https://forms.gle/WN3px2vnANwpdcyAA" target='_blank'>Register</Link>
           </Button>
           <Button asChild size="lg" variant="techOutline">
-            <a href="#about">EXPLORE</a>
+            <Link 
+              href="#about" 
+              scroll={false}
+              onClick={(e) => {
+                e.preventDefault();
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  window.scrollTo({
+                    top: aboutSection.offsetTop - 80, // Adding offset to account for header height
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+            >
+              EXPLORE
+            </Link>
           </Button>
         </div>
 

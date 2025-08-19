@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import CodeRain from './interactive/code-rain';
-import MouseFollower from './interactive/mouse-follower';
+// Removed MouseFollower import
 
 export function CyberpunkBackground() {
   return (
@@ -19,8 +19,7 @@ export function CyberpunkBackground() {
       {/* Scan lines effect */}
       <div className="absolute inset-0 scan-lines pointer-events-none"></div>
       
-      {/* Mouse follower */}
-      <MouseFollower />
+      {/* Mouse follower removed */}
     </div>
   );
 }
