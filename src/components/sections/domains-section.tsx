@@ -11,123 +11,197 @@ const problemStatements = {
   webDev: [
     {
       title: "BharatSkill Connect",
-      subtitle: "A Hyperlocal P2P Skill Exchange & Livelihood Platform",
-      description: `To foster community development and promote the goals of the Atmanirbhar Bharat initiative, this platform will serve as a peer-to-peer (P2P) skill exchange, connecting local 'Gurus' (teachers) with 'Shishyas' (learners) in their vicinity.`,
+      subtitle: "Hyperlocal P2P Skill Exchange",
+      description: "Connect local Gurus and Shishyas for skill exchange and livelihood.",
       features: [
-        "Secure User Authentication & Profiles",
-        "Skill Listing & Discovery",
-        "Geolocation-Based Search",
-        "In-App Messaging System",
-        "Review and Rating System"
+        "User Authentication",
+        "Skill Listing",
+        "Geolocation Search",
+        "Messaging",
+        "Reviews & Ratings"
       ],
       additionalFeatures: [
-        "Integration with Government Skill Portals",
-        "Vernacular Language Support",
-        "Secure Mini-Payment Integration",
-        "Group Workshop Module"
+        "Govt Portal Integration",
+        "Vernacular Support",
+        "Mini-Payments",
+        "Group Workshops"
       ]
     },
     {
       title: "GramSeva",
-      subtitle: "A Decentralized Digital Haat for Local Services & the Gig Economy",
-      description: "The unorganized service sector in Tier-2/3 cities and rural areas lacks a structured, trustworthy digital platform. This solution will connect local service providers with customers in a secure and transparent environment.",
+      subtitle: "Digital Haat for Local Services",
+      description: "Connect rural service providers with customers securely.",
       features: [
-        "Robust Task Management",
+        "Task Management",
         "Real-Time Chat",
-        "Secure Payment Escrow System",
-        "Comprehensive Profile & Reputation System"
+        "Payment Escrow",
+        "Profile & Reputation"
       ],
       additionalFeatures: [
-        "AI-Powered Matchmaking",
-        "Digital KYC and Verification",
-        "Multilingual Voice-Note Support",
-        "Dispute Resolution Mechanism"
+        "AI Matchmaking",
+        "Digital KYC",
+        "Voice-Note Support",
+        "Dispute Resolution"
+      ]
+    },
+    {
+      title: "SwachhGrid",
+      subtitle: "AI-Powered Smart Waste Management",
+      description: "Real-time monitoring and route optimization for efficient waste collection.",
+      features: [
+        "Real-Time Visualization Dashboard",
+        "Real-Time Data Collection",
+        "Historical Analytics", 
+        "Automated Alerting System"
+      ],
+      additionalFeatures: [
+        "AI-Powered Route Optimization",
+        "Predictive Fill-Level Analytics",
+        "Waste Segregation Monitoring",
+        "Citizen Engagement Portal",
+        "Gamification & Reporting"
       ]
     },
     {
       title: "Sahayak",
-      subtitle: "An AI-Powered Multilingual Conversational Platform for University Student Onboarding & Support",
-      description: "An AI-driven conversational assistant that acts as a one-stop source of information for students, available 24/7, providing instant, accurate, and personalized information.",
+      subtitle: "AI-Powered Multilingual Student Support Platform",
+      description: "Conversational assistant for university student onboarding and support.",
       features: [
-        "Natural Language Processing (NLP)",
+        "NLP Core Engine",
         "Comprehensive Knowledge Base",
-        "Web-Based Chat Interface",
-        "Basic Analytics Dashboard"
+        "Clean Web UI",
+        "Administrator Dashboard"
       ],
       additionalFeatures: [
-        "Integration with University ERP",
-        "Multilingual and Voice-Enabled",
+        "ERP Integration",
+        "Multilingual & Voice Support",
         "Live Agent Handoff",
-        "Proactive Notifications"
+        "Proactive Notifications",
+        "Sentiment Analysis"
       ]
-    }
+    },
+    {
+      title: "DigiPratibha",
+      subtitle: "Digital Portfolio for Students",
+      description: "No-code platform for students to build and share portfolios.",
+      features: [
+        "Drag-and-Drop Builder",
+        "Templates",
+        "Content Integration",
+        "One-Click Hosting",
+        "PDF Export",
+        "User Management"
+      ],
+      additionalFeatures: [
+        "AI Content Assistant",
+        "Institution Dashboard",  
+        "DigiLocker Integration",
+        "Skill Visualization",
+        "Vernacular Support"
+      ]
+    },
   ],
   aiMl: [
     {
       title: "SecureAttend",
-      subtitle: "A Real-Time, Liveness-Detection Enabled Facial Recognition System for Proctoring and Attendance",
-      description: "An advanced facial recognition system that not only marks attendance but also ensures the authenticity of the individual using liveness detection, making it suitable for high-stakes environments.",
+      subtitle: "Liveness-Enabled Face Recognition",
+      description: "Real-time facial recognition for secure attendance.",
       features: [
-        "High-Accuracy Face Recognition",
-        "Centralized Attendance Database",
-        "Administrator Dashboard"
+        "Face Recognition",
+        "Attendance Database",
+        "Mask and obstruction handling",
+        "Admin Dashboard"
       ],
       additionalFeatures: [
-        "Robust Liveness Detection",
-        "Mask and Obstruction Handling",
-        "Real-Time Anomaly Alerts",
-        "API for Integration"
+        "Liveness Detection",
+        "Mask Handling",
+        "Anomaly Alerts",
+        "API Integration"
+      ]
+    },
+    {
+      title: "ManasFit",
+      subtitle: "AI Platform for Student Mental & Physical Wellness",
+      description: "Holistic wellness tracking and AI-powered support for students.",
+      features: [
+        "Unified Wellness Tracker",
+        "AI Conversational Agent",
+        "Personalized Visualization Dashboard",
+        "Curated Resource Hub"
+      ],
+      additionalFeatures: [
+        "Correlation & Nudge Engine",
+        "Anonymized Institutional Dashboard",
+        "Intelligent Alert System",
+        "Gamification & Guided Modules"
+      ]
+    },
+    {
+      title: "VidyaSaathi",
+      subtitle: "AI-Powered Scholarship Recommendation System",
+      description: "Personalized scholarship matching for enhanced educational equity.",
+      features: [
+        "Intelligent User Profiling",
+        "AI-Powered Matching Engine",
+        "Personalized Dashboard",
+        "Automated Eligibility Checking"
+      ],
+      additionalFeatures: [
+        "Dynamic Scholarship Updates",
+        "NLP-Based Criteria Understanding",
+        "Smart Alert System",
+        "Community Forum & Multilingual Support"
       ]
     },
     {
       title: "Netra",
-      subtitle: "An AI-Powered Dynamic Traffic Flow Optimization System for Smart Cities",
-      description: "An intelligent system that analyzes real-time traffic camera feeds to dynamically control signal timings, thereby optimizing traffic flow, reducing congestion, and enabling faster transit for emergency vehicles.",
+      subtitle: "AI Traffic Optimization",
+      description: "Optimize city traffic using real-time AI analysis.",
       features: [
-        "Real-Time Vehicle Detection",
-        "Traffic Density Calculation",
-        "Dynamic Signal Timing Logic",
+        "Vehicle Detection",
+        "Density Calculation",
+        "Signal Timing",
         "Simulation Dashboard"
       ],
       additionalFeatures: [
-        "Emergency Vehicle Preemption",
-        "Predictive Traffic Modeling",
+        "Emergency Preemption",
+        "Predictive Modeling",
         "Multi-Junction Coordination",
-        "Pedestrian and Cyclist Detection"
+        "Pedestrian Detection"
       ]
     }
   ],
   blockchain: [
     {
       title: "BlockCertify",
-      subtitle: "A Decentralized System for Immutable Proof of Originality and Academic Credential Verification",
-      description: "A blockchain-based system where students and researchers can create an immutable, time-stamped proof of their original work and where institutions can issue tamper-proof digital credentials.",
+      subtitle: "Decentralized Credential Verification",
+      description: "Blockchain-based proof of originality and credential issuance.",
       features: [
         "Proof of Originality",
         "Verification Interface",
-        "Digital Wallet Integration"
+        "Wallet Integration"
       ],
       additionalFeatures: [
-        "Verifiable Credential Issuance",
-        "Zero-Knowledge Plagiarism Check",
-        "Decentralized Storage (IPFS)"
+        "Credential Issuance",
+        "Plagiarism Check",
+        "Decentralized Storage"
       ]
     },
     {
       title: "AgriTrace",
-      subtitle: "A Blockchain and IoT-Powered Supply Chain Traceability System for Agricultural Produce",
-      description: "A farm-to-fork traceability solution using blockchain, IoT, and QR codes to create a transparent and immutable record of a product's journey, ensuring food safety and empowering both farmers and consumers.",
+      subtitle: "Blockchain Supply Chain for Agriculture",
+      description: "Farm-to-fork traceability using blockchain and IoT.",
       features: [
         "Asset Tokenization",
-        "Multi-Stakeholder Platform",
-        "QR Code Generation & Scanning",
+        "Stakeholder Platform",
+        "QR Code System",
         "Immutable Ledger"
       ],
       additionalFeatures: [
-        "IoT Sensor Integration",
-        "Smart Contract-Based Payments",
-        "AI-Powered Quality Check",
-        "Integration with Government Portals"
+        "IoT Integration",
+        "Smart Payments",
+        "AI Quality Check",
+        "Govt Portal Integration"
       ]
     }
   ]
