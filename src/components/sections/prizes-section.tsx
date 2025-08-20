@@ -7,17 +7,17 @@ const prizes = [
   {
     icon: <Trophy className="w-12 h-12 text-yellow-400" />,
     title: '1st winner',
-    description: 'The winning team will receive amazing rewards and recognition! Includes a prize, winner certificates and exclusive swag.',
+    description: 'The winning team will receive amazing rewards and recognition! Includes a prize and winner certificates.',
   },
   {
     icon: <Award className="w-12 h-12 text-slate-300" />,
     title: '2nd winner',
-    description: 'Runner-up teams will be rewarded for their outstanding efforts! Includes a prize , runner-up certificates and exclusive swag.',
+    description: 'Runner-up teams will be rewarded for their outstanding efforts! Includes a prize and runner-up certificates.',
   },
   {
     icon: <Star className="w-12 h-12 text-orange-400" />,
     title: '3rd winner',
-    description: '2nd Runner-up teams will be rewarded for their outstanding efforts! Includes a prize , 2nd runner-up certificates and exclusive swag.',
+    description: '2nd Runner-up teams will be rewarded for their outstanding efforts! Includes a prize and 2nd runner-up certificates.',
   },
 ];
 
