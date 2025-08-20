@@ -99,7 +99,7 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-primary" />
               <div>
-                <p className="text-gray-400">+91 7863040877</p>
+                <p className="text-gray-400">+91 9726831875</p>
                 <p className="text-sm text-gray-500">Mon-Fri, 9am to 6pm</p>
               </div>
             </div>
