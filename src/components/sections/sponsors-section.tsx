@@ -7,7 +7,6 @@ const organizers = [
     name: 'Shree Swaminarayan Institute Of Technology',
     logo: college,
     dataAiHint: 'college logo',
-    title: 'Organized by',
   },
 ];
 
@@ -41,7 +40,6 @@ export function SponsorsSection() {
                 className="mx-auto mb-2"
               />
               <p className="font-bold">{organizer.name}</p>
-              <p className="text-muted-foreground">{organizer.title}</p>
             </div>
           ))}
         </div>

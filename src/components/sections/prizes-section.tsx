@@ -56,6 +56,27 @@ export function PrizesSection() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div 
+        className="mt-16 text-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <Card className="bg-card/60 border-border/20 backdrop-blur-sm max-w-3xl mx-auto">
+          <CardContent className="pt-6">
+            <div className="flex justify-center mb-4">
+              <Gift className="w-10 h-10 text-primary" />
+            </div>
+            <h3 className="text-2xl font-semibold mb-2">For All Participants</h3>
+            <p className="text-muted-foreground">
+              Every participant will receive a <span className="font-medium text-primary">Certificate of Participation</span> recognizing their creativity and effort. 
+              Plus, exciting <span className="font-medium text-primary">special surprises</span> await all hackathon attendees!
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
     </section>
   );
 }
