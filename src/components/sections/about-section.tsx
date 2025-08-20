@@ -15,12 +15,8 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">What is <span className="text-gradient">HackHertz?</span></h2>
-            <p className="text-lg text-muted-foreground mb-4">A 2-day offline hackathon fostering innovation and collaboration.</p>
             <p className="text-muted-foreground mb-4">
-              HackHertz is a 2-day offline hackathon organized by SSIT where students work in teams to solve real-world open innovation problems using technology. It fosters collaboration, creativity, critical thinking, and communication skills.
-            </p>
-            <p className="text-muted-foreground">
-              Organized by Shree Swaminarayan Institute Of Technology, Bhat, this event is designed to give students a platform to create impactful projects while simulating an industry-like environment.
+              HackHertz is a 2-day offline hackathon organized by Shree Swaminarayan Institute Of Technology, Bhat, where students work in teams to solve real-world open innovation problems using technology. The event fosters collaboration, creativity, critical thinking, and communication skills, giving students a platform to create impactful projects in an industry-like environment.
             </p>
           </div>
           <div className="bg-card border border-border p-8 rounded-lg space-y-4">

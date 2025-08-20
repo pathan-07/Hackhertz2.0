@@ -70,6 +70,7 @@ const problemStatements = {
         "NLP Core Engine",
         "Comprehensive Knowledge Base",
         "Clean Web UI",
+        "Text to Speech, Speech to Text & Speech to Speech",
         "Administrator Dashboard"
       ],
       additionalFeatures: [
