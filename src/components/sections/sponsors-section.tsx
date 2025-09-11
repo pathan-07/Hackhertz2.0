@@ -3,6 +3,7 @@ import college from '@/assets/college.png';
 import gap3Logo from '@/assets/gap3.png';
 import creart from '@/assets/crearte.png';
 import patelWeb from '@/assets/patelssit.png';
+import vedspon from '@/assets/vedspon.png';
 
 const organizers = [
   {
@@ -31,6 +32,12 @@ const sponsors = [
     dataAiHint: 'sponsor logo',
     tier: 'Well Wishers',
   },
+  {
+    name: 'VEDSHILL.CAREERS',
+    logo: vedspon,
+    dataAiHint: 'sponsor logo',
+    tier: 'Silver',
+  },  
 ];
 
 export function SponsorsSection() {
