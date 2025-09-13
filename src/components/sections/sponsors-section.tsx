@@ -4,6 +4,7 @@ import gap3Logo from '@/assets/gap3.png';
 import creart from '@/assets/crearte.png';
 import patelWeb from '@/assets/patelssit.png';
 import vedspon from '@/assets/vedspon.png';
+import AVISHKAR from '@/assets/AAVISHKAR.png';
 
 const organizers = [
   {
@@ -27,16 +28,22 @@ const sponsors = [
     tier: 'Gold',
   },
   {
-    name: 'PATEL WEB SOLUTION',
-    logo: patelWeb,
+    name: 'AAVISHKAR CODEX INFOTECH LLP',
+    logo: AVISHKAR,
     dataAiHint: 'sponsor logo',
-    tier: 'Well Wishers',
+    tier: 'Gold',
   },
   {
     name: 'VEDSHILL.CAREERS',
     logo: vedspon,
     dataAiHint: 'sponsor logo',
     tier: 'Silver',
+  },  
+    {
+    name: 'PATEL WEB SOLUTION',
+    logo: patelWeb,
+    dataAiHint: 'sponsor logo',
+    tier: 'Well Wishers',
   },  
 ];
 
