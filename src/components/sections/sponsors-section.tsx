@@ -5,6 +5,7 @@ import creart from '@/assets/crearte.png';
 import patelWeb from '@/assets/patelssit.png';
 import vedspon from '@/assets/vedspon.png';
 import AVISHKAR from '@/assets/AAVISHKAR.png';
+import brain from '@/assets/brain.png';
 
 const organizers = [
   {
@@ -39,12 +40,18 @@ const sponsors = [
     dataAiHint: 'sponsor logo',
     tier: 'Silver',
   },  
-    {
+  {
     name: 'PATEL WEB SOLUTION',
     logo: patelWeb,
     dataAiHint: 'sponsor logo',
     tier: 'Well Wishers',
   },  
+  {
+    name: 'BrainyBeam',
+    logo: brain,
+    dataAiHint: 'sponsor logo',
+    tier: 'Well Wishers',
+  },
 ];
 
 export function SponsorsSection() {
